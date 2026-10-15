@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.streamlit/
+extracted_pages/
+*.log
+screenshot_*.png

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중학교 과학 디지털 탐구실 - 보일의 법칙 & 샤를의 법칙</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+</head>
+<body>
+
+  <!-- ================== 상단 글로벌 네비게이션 ================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand" data-route="home">
+        <div class="brand-icon">⚛️</div>
+        <div>
+          <div class="brand-title">중학교 과학 디지털 탐구실</div>
+          <div class="brand-subtitle">기체의 압력·온도와 부피 관계 (보일·샤를의 법칙)</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><button class="nav-btn active" data-route="home">🏠 홈</button></li>
+          
+          <li class="nav-dropdown">
+            <button class="nav-btn boyle-btn" data-route="boyle">🧪 보일의 법칙 ▾</button>
+            <div class="dropdown-content">
+              <div class="dropdown-item" data-route="boyle-activity">
+                <strong>[활동하기] 디지털 압력 센서 실험</strong>
+                <span>주사기 부피에 따른 압력 측정 및 그래프</span>
+              </div>
+              <div class="dropdown-item" data-route="boyle-particle">
+                <strong>[해보기] 기체 입자 모형 해석</strong>
+                <span>부피 변화에 따른 입자 충돌 횟수 관찰</span>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-dropdown">
+            <button class="nav-btn charles-btn" data-route="charles">🔥 샤를의 법칙 ▾</button>
+            <div class="dropdown-content">
+              <div class="dropdown-item" data-route="charles-activity">
+                <strong>[활동하기] 비커와 피펫 온도 실험</strong>
+                <span>온도에 따른 피펫 색소 이동 및 그래프</span>
+              </div>
+              <div class="dropdown-item" data-route="charles-particle">
+                <strong>[해보기] 기체 입자 모형 해석</strong>
+                <span>온도에 따른 입자 운동 빠르기와 충돌 세기</span>
+              </div>
+            </div>
+          </li>
+
+          <li><button class="nav-btn" data-route="full-notebook">📋 나의 탐구 노트</button></li>
+        </ul>
+      </nav>
+
+      <!-- 학생 인적사항 바 -->
+      <div class="student-badge">
+        <span>🧑‍🎓</span>
+        <input type="text" id="student-grade" placeholder="학년 반 번호" style="width: 110px;">
+        <span style="color:#cbd5e1;">|</span>
+        <input type="text" id="student-name" placeholder="이름" style="width: 70px;">
+      </div>
+    </div>
+  </header>
+
+  <!-- ================== 메인 콘텐츠 뷰 영역 ================== -->
+  <main class="main-wrapper">
+
+    <!-- ================== 1. 홈 프론트 페이지 ================== -->
+    <section id="view-home" class="page-view active">
+      <div class="hero-banner">
+        <span class="hero-tag">중학교 과학 탐구 시뮬레이션</span>
+        <h1 class="hero-title">기체의 압력과 온도에 따른 부피 변화</h1>
+        <p class="hero-desc">
+          교과서 속 탐구 실험(활동하기)과 입자 모형(해보기)을 직접 시뮬레이션으로 조작해 보고,<br>
+          스마트 탐구 노트에 실시간 측정값과 나의 생각을 기록해 보세요.
+        </p>
+      </div>
+
+      <!-- 보일 & 샤를 대형 선택 카드 그리드 -->
+      <div class="law-cards-grid">
+        <!-- 보일의 법칙 카드 -->
+        <div class="law-card boyle">
+          <div class="card-header-badge">
+            <span class="law-num">단원 2</span>
+            <span class="law-icon">🎈</span>
+          </div>
+          <h2>보일의 법칙 (Boyle's Law)</h2>
+          <div class="curiosity-box">
+            <strong>🤔 생각 열기 (교과서 질문)</strong>
+            "잡고 있던 풍선을 놓치면 하늘 높이 올라가면서 크기가 커지다 결국 터지게 된다. 그 까닭은 무엇일까?"
+          </div>
+          <p class="law-objective">
+            <strong>탐구 목표:</strong> 일정한 온도에서 압력에 따른 기체의 부피 변화를 설명하고, 입자 모형으로 그 까닭을 분석할 수 있다.
+          </p>
+
+          <div class="card-btn-group">
+            <button class="sim-nav-card-btn primary-boyle" data-route="boyle-activity">
+              <div class="sim-btn-info">
+                <strong>🔬 [활동하기] 압력 센서를 이용한 그래프 그리기</strong>
+                <span>20 mL 주사기 피스톤 조절, 디지털 센서 실시간 측정</span>
+              </div>
+              <span class="sim-btn-arrow">→</span>
+            </button>
+            <button class="sim-nav-card-btn" data-route="boyle-particle">
+              <div class="sim-btn-info">
+                <strong>⚛️ [해보기] 기체의 부피 변화를 입자 모형으로 해석하기</strong>
+                <span>(가) 60 mL vs (나) 30 mL 주사기 속 입자 충돌 횟수 비교</span>
+              </div>
+              <span class="sim-btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 샤를의 법칙 카드 -->
+        <div class="law-card charles">
+          <div class="card-header-badge">
+            <span class="law-num">단원 1</span>
+            <span class="law-icon">🥛</span>
+          </div>
+          <h2>샤를의 법칙 (Charles's Law)</h2>
+          <div class="curiosity-box">
+            <strong>🤔 생각 열기 (교과서 질문)</strong>
+            "냉장고에 있던 우유를 꺼내놓았더니 우유갑에 꽂아 놓은 빨대에서 저절로 우유가 흘러나왔다. 그 까닭은 무엇일까?"
+          </div>
+          <p class="law-objective">
+            <strong>탐구 목표:</strong> 일정한 압력에서 온도에 따른 기체의 부피 변화를 설명하고, 입자 모형으로 그 까닭을 분석할 수 있다.
+          </p>
+
+          <div class="card-btn-group">
+            <button class="sim-nav-card-btn primary-charles" data-route="charles-activity">
+              <div class="sim-btn-info">
+                <strong>🔬 [활동하기] 온도에 따른 기체의 부피 관계</strong>
+                <span>비커 수온 조절(10~60℃), 피펫 속 붉은 색소 방울 이동 관찰</span>
+              </div>
+              <span class="sim-btn-arrow">→</span>
+            </button>
+            <button class="sim-nav-card-btn" data-route="charles-particle">
+              <div class="sim-btn-info">
+                <strong>⚛️ [해보기] 기체의 온도 변화를 입자 모형으로 해석하기</strong>
+                <span>온도에 따른 기체 입자의 운동 빠르기 및 충돌 세기 비교</span>
+              </div>
+              <span class="sim-btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 탐구 노트 종합 배너 -->
+      <div class="notebook-summary-banner">
+        <div class="summary-info">
+          <h3>📝 수업 중 기록한 나의 탐구 결과 확인하기</h3>
+          <p>모든 실험 측정값과 학생의 작성 내용은 실시간으로 자동 보관됩니다. 완료 후 A4 보고서 형태로 인쇄하거나 PDF로 저장할 수 있습니다.</p>
+        </div>
+        <div class="summary-actions">
+          <button class="btn-action btn-secondary" id="btn-reset-all">🔄 데이터 초기화</button>
+          <button class="btn-action boyle-action" data-route="full-notebook">📋 탐구 노트 열기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 2. 보일의 법칙 - 활동하기 뷰 ================== -->
+    <section id="view-boyle-activity" class="page-view">
+      <div class="sim-page-header">
+        <div class="sim-title-area">
+          <span class="sim-badge activity">보일의 법칙</span>
+          <div>
+            <h2>[탐구 활동하기] 압력 센서를 이용한 그래프 그리기</h2>
+            <p>준비물: 스마트 기기, 디지털 압력 센서, 플라스틱 주사기(20 mL)</p>
+          </div>
+        </div>
+        <div class="sim-mode-toggle">
+          <button class="sub-tab-btn active" data-route="boyle-activity">활동하기 (센서 실험)</button>
+          <button class="sub-tab-btn" data-route="boyle-particle">해보기 (입자 모형)</button>
+        </div>
+      </div>
+
+      <div class="sim-grid-layout">
+        <!-- 좌측: 시뮬레이터 & 그래프 -->
+        <div class="sim-card">
+          <!-- 캔버스 시뮬레이터 -->
+          <div class="sim-viewport">
+            <canvas id="canvas-boyle-act" class="sim-canvas"></canvas>
+          </div>
+
+          <!-- 컨트롤러 -->
+          <div class="sim-controls">
+            <div class="control-row">
+              <div class="control-label">
+                <span>💉 주사기 부피 조절 (V):</span>
+                <span id="val-boyle-vol" class="value-pill">20.0 mL</span>
+              </div>
+              <div class="control-input-group">
+                <input type="range" id="slider-boyle-vol" class="sim-slider" min="10" max="20" step="0.5" value="20">
+              </div>
+            </div>
+
+            <!-- 교과서 실험 부피 프리셋 버튼 (20, 18, 16, 14, 12, 10 mL) -->
+            <div class="control-row">
+              <span class="control-label">교과서 측정 눈금:</span>
+              <div class="btn-group-presets">
+                <button class="btn-preset active" data-boyle-vol="20">20 mL</button>
+                <button class="btn-preset" data-boyle-vol="18">18 mL</button>
+                <button class="btn-preset" data-boyle-vol="16">16 mL</button>
+                <button class="btn-preset" data-boyle-vol="14">14 mL</button>
+                <button class="btn-preset" data-boyle-vol="12">12 mL</button>
+                <button class="btn-preset" data-boyle-vol="10">10 mL</button>
+              </div>
+              <button class="btn-action boyle-action" id="btn-boyle-record" style="margin-left:auto;">
+                📌 표에 기록하기
+              </button>
+            </div>
+          </div>
+
+          <!-- 실시간 계측기 -->
+          <div class="meter-grid">
+            <div class="meter-box">
+              <div class="meter-title">기체 부피 (V)</div>
+              <div class="meter-val" id="disp-boyle-v">20.0 <span class="meter-unit">mL</span></div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-title">센서 측정 압력 (P)</div>
+              <div class="meter-val" id="val-boyle-pres" style="color:#0284c7;">1.00 <span class="meter-unit">atm</span></div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-title">압력 × 부피 (P × V)</div>
+              <div class="meter-val" id="val-boyle-pv" style="color:#16a34a;">20.0</div>
+            </div>
+          </div>
+
+          <!-- 실시간 반비례 그래프 -->
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <strong style="font-size:0.85rem; color:#334155;">📈 스마트 기기 그래프 (부피-압력 관계)</strong>
+              <span style="font-size:0.75rem; color:#64748b;">점선: 이론 반비례 곡선</span>
+            </div>
+            <div class="graph-container">
+              <canvas id="canvas-boyle-chart" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 탐구 활동 노트 -->
+        <div class="notebook-card">
+          <div class="notebook-header">
+            <h3>📝 [활동하기] 탐구 활동 노트</h3>
+            <span class="save-status">✓ 실시간 자동 저장됨</span>
+          </div>
+
+          <!-- 실험 결과 표 -->
+          <div class="note-section">
+            <div class="note-section-title">📊 1. 실험 결과 기록 표</div>
+            <table class="note-table">
+              <thead>
+                <tr>
+                  <th>부피 (mL)</th>
+                  <th>압력 (atm)</th>
+                  <th>압력 × 부피</th>
+                  <th>삭제</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-boyle-act">
+                <!-- JS 자동 렌더링 -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 정리하기 질문 1 -->
+          <div class="note-section">
+            <div class="note-section-title">❓ 정리하기 1: 부피에 따른 압력 변화</div>
+            <p style="font-size:0.8rem; color:#64748b;">주사기의 피스톤을 눌러 부피를 줄일 때, 압력 센서의 값은 어떻게 변하나요?</p>
+            <textarea id="boyle-q1" class="note-textarea" placeholder="부피가 줄어들수록 압력은..."></textarea>
+          </div>
+
+          <!-- 정리하기 질문 2 -->
+          <div class="note-section">
+            <div class="note-section-title">❓ 정리하기 2: 압력과 부피의 곱 (P × V)</div>
+            <p style="font-size:0.8rem; color:#64748b;">각 단계에서 압력과 부피를 곱한 값(P × V)을 비교해 보고 어떤 규칙이 있는지 서술해 보세요.</p>
+            <textarea id="boyle-q2" class="note-textarea" placeholder="압력과 부피를 곱한 값은..."></textarea>
+          </div>
+
+          <!-- 정리하기 질문 3 -->
+          <div class="note-section">
+            <div class="note-section-title">💡 최종 결론: 보일의 법칙</div>
+            <p style="font-size:0.8rem; color:#64748b;">온도가 일정할 때 기체의 압력과 부피 사이에는 어떤 관계가 성립하나요?</p>
+            <textarea id="boyle-q3" class="note-textarea" placeholder="온도가 일정할 때..."></textarea>
+
+            <button class="hint-toggle-btn">💡 힌트/예시 답안 확인 ▼</button>
+            <div class="hint-content">
+              <strong>[모범 답안]</strong> 온도가 일정할 때 일정량의 기체의 부피는 압력에 반비례한다. 압력이 2배, 3배가 되면 부피는 1/2배, 1/3배로 줄어들고, 압력과 부피의 곱(P × V)은 항상 일정하다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 3. 보일의 법칙 - 해보기 뷰 ================== -->
+    <section id="view-boyle-particle" class="page-view">
+      <div class="sim-page-header">
+        <div class="sim-title-area">
+          <span class="sim-badge explore">보일의 법칙</span>
+          <div>
+            <h2>[탐구 해보기] 기체의 압력에 따른 부피 변화를 입자 모형으로 해석하기</h2>
+            <p>교과서 그림: 60 mL 주사기 피스톤을 누르기 전과 누른 후의 입자 모형 비교</p>
+          </div>
+        </div>
+        <div class="sim-mode-toggle">
+          <button class="sub-tab-btn" data-route="boyle-activity">활동하기 (센서 실험)</button>
+          <button class="sub-tab-btn active" data-route="boyle-particle">해보기 (입자 모형)</button>
+        </div>
+      </div>
+
+      <div class="sim-grid-layout">
+        <!-- 좌측: 입자 모형 캔버스 -->
+        <div class="sim-card">
+          <div class="sim-viewport">
+            <canvas id="canvas-boyle-part" class="sim-canvas"></canvas>
+          </div>
+          <div class="word-chips-box">
+            <strong>💡 관찰 포인트:</strong>
+            (가) 60 mL 상태와 (나) 30 mL 상태에서 기체 입자의 크기, 개수, 화살표 길이(운동 빠르기)는 변하지 않지만, 공간이 좁아져 단위 시간당 벽면에 부딪히는 충돌 횟수가 약 2배로 증가합니다!
+          </div>
+        </div>
+
+        <!-- 우측: 해보기 탐구 노트 -->
+        <div class="notebook-card">
+          <div class="notebook-header">
+            <h3>📝 [해보기] 기체 입자 모형 분석 노트</h3>
+            <span class="save-status">✓ 실시간 자동 저장됨</span>
+          </div>
+
+          <!-- 교과서 4대 관찰 정리 표 -->
+          <div class="note-section">
+            <div class="note-section-title">🔍 (가)에서 (나)로 될 때 기체 입자의 변화</div>
+            <table class="note-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>변화 관찰 선택</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>입자의 크기</strong></td>
+                  <td>
+                    <select id="boyle-part-size" class="note-select">
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="작아진다">작아진다</option>
+                      <option value="커진다">커진다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자의 개수</strong></td>
+                  <td>
+                    <select id="boyle-part-count" class="note-select">
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="줄어든다">줄어든다</option>
+                      <option value="늘어난다">늘어난다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자의 운동 빠르기</strong></td>
+                  <td>
+                    <select id="boyle-part-speed" class="note-select">
+                      <option value="변하지 않는다">변하지 않는다 (온도 일정)</option>
+                      <option value="빨라진다">빨라진다</option>
+                      <option value="느려진다">느려진다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자가 벽면에 충돌하는 횟수</strong></td>
+                  <td>
+                    <select id="boyle-part-collision" class="note-select">
+                      <option value="많아진다 (증가한다)">많아진다 (증가한다)</option>
+                      <option value="적어진다 (감소한다)">적어진다 (감소한다)</option>
+                      <option value="변하지 않는다">변하지 않는다</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 교과서 과정 3 서술형 문제 -->
+          <div class="note-section">
+            <div class="note-section-title">✍️ 핵심 용어를 넣은 과학적 설명 작성</div>
+            <div class="word-chips-box">
+              <span>필수 포함 용어:</span>
+              <span class="word-chip">피스톤을 누르는 압력</span>
+              <span class="word-chip">기체 입자의 개수</span>
+              <span class="word-chip">입자가 주사기 안의 벽면에 충돌하는 횟수</span>
+              <span class="word-chip">기체의 압력</span>
+              <span class="word-chip">기체의 부피</span>
+            </div>
+            <textarea id="boyle-part-desc" class="note-textarea" style="min-height: 90px;"></textarea>
+
+            <button class="hint-toggle-btn">💡 힌트/예시 답안 확인 ▼</button>
+            <div class="hint-content">
+              <strong>[모범 답안]</strong> 피스톤을 누르는 압력이 커지면 기체 입자의 개수나 운동 빠르기는 변하지 않지만, 기체의 부피는 줄어든다. 따라서 기체 입자 사이의 거리가 가까워져 입자가 주사기 안의 벽면에 충돌하는 횟수가 증가하므로 용기 안 기체의 압력이 커진다.
+            </div>
+          </div>
+
+          <!-- 스스로 평가하기 퀴즈 -->
+          <div class="note-section">
+            <div class="note-section-title">✏️ 스스로 평가하기 퀴즈</div>
+            <p style="font-size:0.85rem; line-height: 1.6;">
+              일정한 온도에서 일정한 양의 기체에 작용하는 압력이 커지면 부피가 (
+              <select id="boyle-quiz-1" class="note-select">
+                <option value="줄어들">줄어들</option>
+                <option value="늘어나">늘어나</option>
+              </select>
+              )고, 압력이 작아지면 부피가 (
+              <select id="boyle-quiz-2" class="note-select">
+                <option value="줄어든">줄어든</option>
+                <option value="늘어난">늘어난</option>
+              </select>
+              )다.
+            </p>
+            <div id="boyle-quiz-feedback" style="font-size:0.8rem; font-weight:bold; margin-top:4px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 4. 샤를의 법칙 - 활동하기 뷰 ================== -->
+    <section id="view-charles-activity" class="page-view">
+      <div class="sim-page-header">
+        <div class="sim-title-area">
+          <span class="sim-badge activity" style="background:#ffedd5; color:#c2410c;">샤를의 법칙</span>
+          <div>
+            <h2>[탐구 활동하기] 기체의 온도와 부피 관계</h2>
+            <p>준비물: 500 mL 비커, 20 mL 유리병, 5 mL 눈금 피펫, 액체 색소, 디지털 온도계, 스탠드</p>
+          </div>
+        </div>
+        <div class="sim-mode-toggle">
+          <button class="sub-tab-btn active" data-route="charles-activity">활동하기 (온도 실험)</button>
+          <button class="sub-tab-btn" data-route="charles-particle">해보기 (입자 모형)</button>
+        </div>
+      </div>
+
+      <div class="sim-grid-layout">
+        <!-- 좌측: 시뮬레이터 & 그래프 -->
+        <div class="sim-card">
+          <div class="sim-viewport">
+            <canvas id="canvas-charles-act" class="sim-canvas"></canvas>
+          </div>
+
+          <!-- 컨트롤러 -->
+          <div class="sim-controls">
+            <div class="control-row">
+              <div class="control-label">
+                <span>🌡️ 비커 속 물의 온도 조절:</span>
+                <span id="val-charles-temp" class="value-pill" style="color:#ea580c;">20.0 ℃</span>
+              </div>
+              <div class="control-input-group">
+                <input type="range" id="slider-charles-temp" class="sim-slider charles-slider" min="10" max="60" step="1" value="20">
+              </div>
+            </div>
+
+            <!-- 교과서 실험 온도 프리셋 (10, 20, 30, 40, 50, 60 ℃) -->
+            <div class="control-row">
+              <span class="control-label">온도 단계:</span>
+              <div class="btn-group-presets">
+                <button class="btn-preset" data-charles-temp="10">10 ℃ (찬물)</button>
+                <button class="btn-preset active" data-charles-temp="20">20 ℃ (실온)</button>
+                <button class="btn-preset" data-charles-temp="30">30 ℃</button>
+                <button class="btn-preset" data-charles-temp="40">40 ℃</button>
+                <button class="btn-preset" data-charles-temp="50">50 ℃</button>
+                <button class="btn-preset" data-charles-temp="60">60 ℃ (뜨거운물)</button>
+              </div>
+              <button class="btn-action charles-action" id="btn-charles-record" style="margin-left:auto;">
+                📌 표에 기록하기
+              </button>
+            </div>
+          </div>
+
+          <!-- 실시간 계측기 -->
+          <div class="meter-grid">
+            <div class="meter-box">
+              <div class="meter-title">비커 수온 (T)</div>
+              <div class="meter-val" id="disp-charles-t" style="color:#ea580c;">20.0 <span class="meter-unit">℃</span></div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-title">피펫 눈금 값 (V)</div>
+              <div class="meter-val" id="val-charles-pip" style="color:#dc2626;">0.75 <span class="meter-unit">mL</span></div>
+            </div>
+            <div class="meter-box">
+              <div class="meter-title">초기(10℃) 대비 부피 팽창량</div>
+              <div class="meter-val" id="val-charles-exp" style="color:#16a34a;">+0.75 <span class="meter-unit">mL</span></div>
+            </div>
+          </div>
+
+          <!-- 실시간 비례 그래프 -->
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <strong style="font-size:0.85rem; color:#334155;">📈 실험 결과 그래프 (온도-부피 선형 비례 관계)</strong>
+              <span style="font-size:0.75rem; color:#64748b;">점선: 이론 비례 직선</span>
+            </div>
+            <div class="graph-container">
+              <canvas id="canvas-charles-chart" style="width:100%; height:100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 탐구 활동 노트 -->
+        <div class="notebook-card">
+          <div class="notebook-header">
+            <h3>📝 [활동하기] 탐구 활동 노트</h3>
+            <span class="save-status">✓ 실시간 자동 저장됨</span>
+          </div>
+
+          <!-- 실험 결과 표 -->
+          <div class="note-section">
+            <div class="note-section-title">📊 1. 온도에 따른 피펫 눈금 기록 표</div>
+            <table class="note-table">
+              <thead>
+                <tr>
+                  <th>온도 (℃)</th>
+                  <th>피펫 눈금 (mL)</th>
+                  <th>삭제</th>
+                </tr>
+              </thead>
+              <tbody id="tbody-charles-act">
+                <!-- JS 자동 렌더링 -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 질문 1 -->
+          <div class="note-section">
+            <div class="note-section-title">❓ 정리하기 1: 피펫 속 액체 색소의 이동</div>
+            <p style="font-size:0.8rem; color:#64748b;">온도가 높아질 때와 낮아질 때, 피펫 속 붉은 액체 색소는 어느 방향으로 이동하나요?</p>
+            <textarea id="charles-q1" class="note-textarea" placeholder="온도가 높아지면 색소는... 온도가 낮아지면 색소는..."></textarea>
+          </div>
+
+          <!-- 질문 2 -->
+          <div class="note-section">
+            <div class="note-section-title">❓ 정리하기 2: 온도에 따른 기체의 부피 변화</div>
+            <p style="font-size:0.8rem; color:#64748b;">온도가 낮아질 때 기체의 부피는 어떻게 변하며, 그래프는 어떤 모양으로 나타나나요?</p>
+            <textarea id="charles-q2" class="note-textarea" placeholder="온도가 낮아질 때 기체의 부피는..."></textarea>
+          </div>
+
+          <!-- 질문 3 (결론) -->
+          <div class="note-section">
+            <div class="note-section-title">💡 최종 결론: 샤를의 법칙</div>
+            <p style="font-size:0.8rem; color:#64748b;">압력이 일정할 때 기체의 온도와 부피 사이에는 어떤 관계가 성립하나요?</p>
+            <textarea id="charles-q3" class="note-textarea" placeholder="압력이 일정할 때 기체의 온도가 높아지면..."></textarea>
+
+            <button class="hint-toggle-btn">💡 힌트/예시 답안 확인 ▼</button>
+            <div class="hint-content">
+              <strong>[모범 답안]</strong> 압력이 일정할 때 일정량의 기체의 온도가 높아지면 부피가 일정하게 증가하고, 온도가 낮아지면 부피가 일정하게 감소한다. (기체의 부피는 온도에 비례하여 증가한다 - 샤를의 법칙)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 5. 샤를의 법칙 - 해보기 뷰 ================== -->
+    <section id="view-charles-particle" class="page-view">
+      <div class="sim-page-header">
+        <div class="sim-title-area">
+          <span class="sim-badge explore" style="background:#ffedd5; color:#c2410c;">샤를의 법칙</span>
+          <div>
+            <h2>[탐구 해보기] 기체의 온도에 따른 부피 변화를 입자 모형으로 해석하기</h2>
+            <p>교과서 그림: 60℃ 물에 넣고 온도가 내려가기 전과 후의 유리병 속 기체 입자 모형 비교</p>
+          </div>
+        </div>
+        <div class="sim-mode-toggle">
+          <button class="sub-tab-btn" data-route="charles-activity">활동하기 (온도 실험)</button>
+          <button class="sub-tab-btn active" data-route="charles-particle">해보기 (입자 모형)</button>
+        </div>
+      </div>
+
+      <div class="sim-grid-layout">
+        <!-- 좌측: 입자 모형 캔버스 -->
+        <div class="sim-card">
+          <div class="sim-viewport">
+            <canvas id="canvas-charles-part" class="sim-canvas"></canvas>
+          </div>
+          <div class="word-chips-box">
+            <strong>💡 관찰 포인트:</strong>
+            (가) 고온(60℃)에서는 입자 운동이 활발해져 속도 화살표가 길고 벽면을 세게 충돌하여 밀어 올립니다. 반면 (나) 저온(15℃)에서는 입자 운동이 둔해져 화살표가 짧아지고 벽면 충돌 세기가 약해집니다. (입자의 크기와 개수는 변하지 않습니다!)
+          </div>
+        </div>
+
+        <!-- 우측: 해보기 탐구 노트 -->
+        <div class="notebook-card">
+          <div class="notebook-header">
+            <h3>📝 [해보기] 기체 입자 모형 분석 노트</h3>
+            <span class="save-status">✓ 실시간 자동 저장됨</span>
+          </div>
+
+          <!-- 4대 관찰표 -->
+          <div class="note-section">
+            <div class="note-section-title">🔍 (가)에서 (나)로 될 때 기체 입자의 변화</div>
+            <table class="note-table">
+              <thead>
+                <tr>
+                  <th>항목</th>
+                  <th>변화 관찰 선택</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>입자의 크기</strong></td>
+                  <td>
+                    <select id="charles-part-size" class="note-select">
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="작아진다">작아진다</option>
+                      <option value="커진다">커진다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자의 개수</strong></td>
+                  <td>
+                    <select id="charles-part-count" class="note-select">
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="줄어든다">줄어든다</option>
+                      <option value="늘어난다">늘어난다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자의 운동 빠르기</strong></td>
+                  <td>
+                    <select id="charles-part-speed" class="note-select">
+                      <option value="온도가 높을수록 빨라진다">온도가 높을수록 빨라진다 (온도가 내려가면 느려짐)</option>
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="온도가 높을수록 느려진다">온도가 높을수록 느려진다</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>입자가 벽면에 충돌하는 세기</strong></td>
+                  <td>
+                    <select id="charles-part-force" class="note-select">
+                      <option value="온도가 높을수록 세진다">온도가 높을수록 세진다 (온도가 내려가면 약해짐)</option>
+                      <option value="변하지 않는다">변하지 않는다</option>
+                      <option value="온도가 높을수록 약해진다">온도가 높을수록 약해진다</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 서술형 문제 -->
+          <div class="note-section">
+            <div class="note-section-title">✍️ 핵심 용어를 넣은 과학적 설명 작성</div>
+            <div class="word-chips-box">
+              <span>필수 포함 용어:</span>
+              <span class="word-chip">기체의 온도</span>
+              <span class="word-chip">기체 입자의 개수</span>
+              <span class="word-chip">입자 운동의 빠르기</span>
+              <span class="word-chip">입자가 유리병 안의 벽면에 충돌하는 세기</span>
+              <span class="word-chip">기체의 부피</span>
+            </div>
+            <textarea id="charles-part-desc" class="note-textarea" style="min-height: 90px;"></textarea>
+
+            <button class="hint-toggle-btn">💡 힌트/예시 답안 확인 ▼</button>
+            <div class="hint-content">
+              <strong>[모범 답안]</strong> 기체의 온도가 높아지면 기체 입자의 개수는 변하지 않지만, 기체 입자 운동의 빠르기가 빨라지면서 입자가 유리병 안의 벽면에 충돌하는 세기가 커진다. 따라서 기체 입자가 용기 벽면을 강하게 밀어내므로 기체의 부피는 늘어난다.
+            </div>
+          </div>
+
+          <!-- 스스로 평가하기 퀴즈 -->
+          <div class="note-section">
+            <div class="note-section-title">✏️ 스스로 평가하기 퀴즈</div>
+            <p style="font-size:0.85rem; line-height: 1.6;">
+              일정한 압력에서 기체의 온도가 높아지면 기체 입자의 운동이 (
+              <select id="charles-quiz-1" class="note-select">
+                <option value="빨라">빨라</option>
+                <option value="느려">느려</option>
+              </select>
+              )지면서 용기 벽면에 충돌하는 세기가 (
+              <select id="charles-quiz-2" class="note-select">
+                <option value="커">커</option>
+                <option value="작아">작아</option>
+              </select>
+              )지고, 부피가 (
+              <select id="charles-quiz-3" class="note-select">
+                <option value="늘어난">늘어난</option>
+                <option value="줄어든">줄어든</option>
+              </select>
+              )다.
+            </p>
+            <div id="charles-quiz-feedback" style="font-size:0.8rem; font-weight:bold; margin-top:4px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 6. 나의 종합 탐구 노트 (인쇄용 리포트) ================== -->
+    <section id="view-full-notebook" class="page-view">
+      <div class="no-print" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; background: white; padding: 1rem 1.5rem; border-radius: var(--radius); border: 1px solid var(--gray-200);">
+        <div>
+          <h2 style="font-size: 1.25rem; font-weight: 800;">📋 나의 탐구 활동 보고서</h2>
+          <p style="font-size: 0.85rem; color: var(--gray-600);">수업 중 기록한 모든 실험 데이터와 탐구 결과가 A4 양식으로 정리되어 있습니다.</p>
+        </div>
+        <div style="display:flex; gap: 0.75rem;">
+          <button class="btn-action btn-secondary" data-route="home">← 메인 화면으로</button>
+          <button class="btn-action boyle-action" id="btn-print-report">🖨️ 인쇄 / PDF 저장</button>
+        </div>
+      </div>
+
+      <!-- 리포트 본체 (인쇄 가능) -->
+      <div class="full-notebook-container">
+        <div class="report-header">
+          <div class="report-title-area">
+            <h1>중학교 과학 탐구 활동 보고서</h1>
+            <p>대단원: 기체의 성질 | 소단원: 기체의 압력과 온도에 따른 부피 변화</p>
+          </div>
+          <table class="student-meta-table">
+            <tr>
+              <td class="label">학번</td>
+              <td id="rep-student-num">중학교 1학년 1반 1번</td>
+              <td class="label">이름</td>
+              <td id="rep-student-name">학생</td>
+            </tr>
+            <tr>
+              <td class="label">탐구 일자</td>
+              <td colspan="3" id="rep-date">2026년 10월 15일</td>
+            </tr>
+          </table>
+        </div>
+
+        <div id="report-content-body">
+          <!-- JS가 실시간 생성 -->
+        </div>
+
+        <!-- 선생님 평가 확인란 -->
+        <div class="report-sub-box" style="margin-top:20px; border-top: 2px dashed #cbd5e1;">
+          <h4 style="margin-bottom:6px;">👨‍🏫 선생님 평가 및 피드백</h4>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size:0.85rem; color:#64748b; line-height:1.5;">
+              평가 기준: 실험 데이터 측정의 정확성(상/중/하), 기체 입자 모형에 따른 과학적 설명 논리성(상/중/하)
+            </div>
+            <div style="display:flex; gap:10px; font-weight:bold; font-size:0.9rem;">
+              <span>평가 등급: [ 상 / 중 / 하 ]</span>
+              <span style="margin-left:20px;">서명/인: ( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 스크립트 로드 -->
+  <script src="js/sim_engine.js"></script>
+  <script src="js/notebook.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
