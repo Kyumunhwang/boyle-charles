@@ -69,4 +69,9 @@ def get_bundled_html():
 
 # 번들링된 HTML 렌더링
 bundled_content = get_bundled_html()
-components.html(bundled_content, height=1050, scrolling=True)
+
+try:
+    # Streamlit 최신 버전 및 범용 지원
+    components.html(bundled_content, height=1050, scrolling=True)
+except Exception:
+    st.components.v1.html(bundled_content, height=1050, scrolling=True)
